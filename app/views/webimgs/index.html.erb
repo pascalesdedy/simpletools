@@ -1,0 +1,26 @@
+<h1>Listing webimgs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Avatar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+	<% @webimgs.each do |webimg| %>
+      <tr>
+        <td><%= webimg.name %></td>
+		<!-- Display the avatar -->
+		<td><%= image_tag webimg.avatar.url(:thumb) %></td>
+      </tr>
+      <td><%= webimg.avatar.url %></td>
+      <td><%= link_to 'Destroy', webimg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New webimg', new_webimg_path %>
