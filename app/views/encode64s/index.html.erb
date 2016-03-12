@@ -1,0 +1,30 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Encode base64 index.html.erb</h1>
+<h3>Already Encoded :<%= @encode64s.count %> strings</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>String input</th>
+      <th>Encoded string</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @encode64s.each do |encode64| %>
+        <tr>
+        <td><%= encode64.name %></td>
+        <td><%= encode64.dataencode %></td>
+        <td><%= link_to 'Destroy', encode64, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'New Note', new_encode64_path %>
+
+</div>
