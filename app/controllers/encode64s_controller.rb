@@ -1,12 +1,15 @@
 class Encode64sController < ApplicationController
 require "base64"
 	
-  	def index
-    	@encode64s = Encode64.all
+  def index
+    	@encode64s = Encode64.all.order("created_at DESC")
  	end
 
+  def last_record
+    @encode64 = Encode64.order("created_at").last 
+  end  
+
 	def new
-		#@dataencode = Base64.encode64('Hellow worrrolddd')
 		@encode64 = Encode64.new
 	end
 
@@ -14,7 +17,7 @@ require "base64"
 		@encode64 = Encode64.find(params[:id])
 		@encode64.destroy
 		respond_to do |format|
-     	format.html { redirect_to encode64s_url, notice: 'Note was successfully destroyed.' }
+     	format.html { redirect_to encode64s_url, notice: 'Record was successfully destroyed.' }
      end
 	end
 

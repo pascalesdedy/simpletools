@@ -1,31 +1,9 @@
-<%= form_for(@encode64) do |f| %>
-  <% if @encode64.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@encode64.errors.count, "error") %> prohibited this note from being saved:</h2>
-
-      <ul>
-      <% @encode64.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div class="container">
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-       <%= text_field_tag 'string_input',nil,class:'form-control',placeholder:' Provide string to encode in base64...'  %>
-       <span class="input-group-btn">
-          <%= f.submit :Encode, class: 'btn btn-default' %>
-       </span>
-
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-</div>
-
-
-
+<%= form_for @encode64, remote: true do |f| %>
+<%= text_field_tag 'string_input',nil,class:'form-control',placeholder:' Provide string to encode in base64...'  %>
+<br>
+<%= f.submit :Encode, class: 'btn btn-default' %>
+<%= link_to 'Back', encode64s_path, class: "btn btn-default" %>
 <% end %>
+
+
 

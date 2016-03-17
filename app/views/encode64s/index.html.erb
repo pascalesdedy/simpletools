@@ -1,13 +1,22 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Encode base64 index.html.erb</h1>
-<h3>Already Encoded :<%= @encode64s.count %> strings</h3>
+<h1>SimpleTools - Base64 encoding</h1>
+
+
+<div id="form" style="display:none;"></div>
+
+
+<div class="alert alert-info">Result : <%= @encode64s.first[:dataencode] %></div>
+<br>
+<%= link_to 'Encode string', new_encode64_path, remote: true, class: "btn btn-default" %>
+<br>
 <table class="table table-hover">
   <thead>
     <tr>
       <th>String input</th>
       <th>Encoded string</th>
+      <th>Encoded at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,15 +25,13 @@
         <tr>
         <td><%= encode64.name %></td>
         <td><%= encode64.dataencode %></td>
-        <td><%= link_to 'Destroy', encode64, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= encode64.created_at %></td>
+        <td><%= link_to 'Destroy', encode64, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
   </tbody>
 </table>
-
+ <%= render 'dialog' %>
 <br>
-
-
-<%= link_to 'New Note', new_encode64_path %>
-
+<h4>Already Encoded :<%= @encode64s.count %> strings</h4>
 </div>
