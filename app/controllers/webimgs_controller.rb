@@ -3,7 +3,7 @@ class WebimgsController < ApplicationController
 	
   # GET /webimgs
   def index
-    @webimgs = Webimg.all
+    @webimgs = Webimg.all.order("created_at DESC")
   end
 
   # GET /webimgs/new
@@ -13,21 +13,18 @@ class WebimgsController < ApplicationController
 
   # POST /webimgs
   def create
-    
     #create the webimg from specified webimg parameters
     @webimg = Webimg.new(webimg_params)
-    
     #pull the image from the specified url and set the webimg's avatar
     @webimg.avatar_from_url(params[:avatar_url])
-
-    if @webimg.save
-      redirect_to action: 'index', notice: 'webimg was successfully created.'
-    else
-      render action: 'new', alert: 'webimg could not be created' 
+    @webimg.save
+    respond_to do |format|   
+      format.html { redirect_to webimgs_url, notice: 'webimg was successfully created.'}
+      format.js{} 
     end
   end
 
-def destroy
+  def destroy
     @webimg = Webimg.find(params[:id])
     @webimg.avatar.destroy
     @webimg.destroy

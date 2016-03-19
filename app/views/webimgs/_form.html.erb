@@ -14,14 +14,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name ,class:'form-control',placeholder:' Please provide Image title' %>
   </div>
   <!-- Upload your avatar via a remote url in a form_tag -->
   <div class="field">
-	  Provide a URL for Your Avatar: <%= text_field_tag 'avatar_url' %>
+	  <%= text_field_tag 'avatar_url', nil,class:'form-control',placeholder:' Please provide Image URL'  %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :Upload, class: 'btn btn-default' %>
   </div>
 <% end %>

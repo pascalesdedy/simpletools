@@ -1,29 +1,19 @@
+<div class="container_webimg">
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Notes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @notes.each do |note| %>
-      <tr>
-        <td><%= note.title %></td>
-        <td><%= note.description %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+      <h2 class="notes_title"><%= note.title %></h2>
+      <p class="notes_sub_title"><%= note.description %></p>
+
+      <%= link_to 'Show', note %> |
+      <%= link_to 'Edit', edit_note_path(note) %> |
+      <%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <li role="separator" class="divider"></li>
     <% end %>
-  </tbody>
-</table>
+
+
 
 <br>
 
 <%= link_to 'New Note', new_note_path %>
+</div>

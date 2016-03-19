@@ -1,0 +1,34 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1 class="notes_title">SimpleTools - Base64 Decoding</h1>
+
+
+<div class="alert alert-info">Result : <%= @decode64s.first[:datadecode] %></div>
+<br>
+<%= link_to 'Decode string', new_decode64_path, remote: true, class: "btn btn-default" %>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>String input</th>
+      <th>Decoded string</th>
+      <th>Decoded at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @decode64s.each do |decode64| %>
+        <tr>
+        <td><%= decode64.name %></td>
+        <td><%= decode64.datadecode %></td>
+        <td><%= decode64.created_at %></td>
+        <td><%= link_to 'Destroy', decode64, method: :delete, class: "btn btn-danger", data: { confirm: "Delete record ?" } %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+ <%= render 'dialog' %>
+<br>
+<h5><i><u>Already decoded :<%= @decode64s.count %> strings</u></i></h4>
+</div>

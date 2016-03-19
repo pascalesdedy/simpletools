@@ -1,7 +1,7 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>SimpleTools - Base64 encoding</h1>
+<h1 class="notes_title">SimpleTools - Base64 encoding</h1>
 
 
 <div id="form" style="display:none;"></div>
@@ -26,12 +26,12 @@
         <td><%= encode64.name %></td>
         <td><%= encode64.dataencode %></td>
         <td><%= encode64.created_at %></td>
-        <td><%= link_to 'Destroy', encode64, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', encode64, method: :delete, class: "btn btn-danger", data: { confirm: "Delete record ?" } %></td>
         </tr>
       <% end %>
   </tbody>
 </table>
  <%= render 'dialog' %>
 <br>
-<h4>Already Encoded :<%= @encode64s.count %> strings</h4>
+<h5><i><u>Already Encoded :<%= @encode64s.count %> strings</u></i></h4>
 </div>

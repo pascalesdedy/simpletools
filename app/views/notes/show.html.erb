@@ -1,14 +1,17 @@
+<div class="container_webimg">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @note.description %>
-</p>
+	<h2 class="notes_title">	
+	   	<%= @note.title %>
+  	</h2>
+  	<p class="notes_sub_title">
+  	<%= @note.description %>
+  	</p>
+
+
+
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
+</div>

@@ -2,7 +2,7 @@ class Encode64sController < ApplicationController
 require "base64"
 	
   def index
-    	@encode64s = Encode64.all.order("created_at DESC")
+    @encode64s = Encode64.all.order("created_at DESC")
  	end
 
   def last_record
@@ -18,20 +18,19 @@ require "base64"
 		@encode64.destroy
 		respond_to do |format|
      	format.html { redirect_to encode64s_url, notice: 'Record was successfully destroyed.' }
-     end
+    end
 	end
 
 	def create
-    	@encode64 = Encode64.new
-    	@encode64.text_input(params[:string_input])
-    	@encode64.encode_from_string(params[:string_input])
-
-    	if @encode64.save
-      		redirect_to action: 'index', notice: 'String sucessfully encoded'
-    	else
-      		render action: 'new', alert: 'String could not be encoded' 
-    	end
-  	end
+    @encode64 = Encode64.new
+    @encode64.text_input(params[:string_input])
+    @encode64.encode_from_string(params[:string_input])
+    @encode64.save
+    respond_to do |format|		
+      format.html { redirect_to encode64s_url, notice: 'String sucessfully encoded' }
+      format.js{} 
+    end
+  end
 
 
 end

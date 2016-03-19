@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312150522) do
+ActiveRecord::Schema.define(version: 20160318150413) do
+
+  create_table "decode64s", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "datadecode"
+  end
 
   create_table "encode64s", force: :cascade do |t|
     t.string   "dataencode"

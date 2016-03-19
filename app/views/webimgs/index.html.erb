@@ -1,26 +1,28 @@
-<h1>Listing webimgs</h1>
+<div class="container_webimg">
+<h1 class="notes_title">IMAGE UPLOADER</h1>
+<% @webimgs.each do |webimg| %>
+  <div class="panel panel-success" >
+     <div class="panel-heading">
+       <h3 class="panel-title"><%= webimg.name %></h3>
+          </div>
+             
+            <div class="panel-body">
+            <!-- Display the avatar -->
+	          <%= image_tag webimg.avatar.url(:thumb), class: 'img-rounded'%>
+            <br>
+            URL: <code><%= webimg.avatar.url %></code>
+            </div>
+  
+            <div class="panel-footer">
+            <%= link_to 'Destroy', webimg, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+             Created at : <%= webimg.created_at %>
+            </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Avatar</th>
-    </tr>
-  </thead>
+    </div>
+<% end %>
+  <%= render 'dialog' %>
+<%= link_to 'Upload Image', new_webimg_path, remote: true, class: "btn btn-default" %>
 
-  <tbody>
-	<% @webimgs.each do |webimg| %>
-      <tr>
-        <td><%= webimg.name %></td>
-		<!-- Display the avatar -->
-		<td><%= image_tag webimg.avatar.url(:thumb) %></td>
-      </tr>
-      <td><%= webimg.avatar.url %></td>
-      <td><%= link_to 'Destroy', webimg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New webimg', new_webimg_path %>
+</div>
