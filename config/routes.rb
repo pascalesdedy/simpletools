@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :notes
-  resources :webimgs
+  #resources :webimgs
   resources :encode64s
   resources :decode64s
   resources :schedules
